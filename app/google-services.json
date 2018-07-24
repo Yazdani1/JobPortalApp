@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1001810973955",
+    "firebase_url": "https://job-portal-app.firebaseio.com",
+    "project_id": "job-portal-app",
+    "storage_bucket": "job-portal-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001810973955:android:d6d6c681cd873942",
+        "android_client_info": {
+          "package_name": "yazdaniscodelab.jobportalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001810973955-mmu6mulinnpqahnectfj79ojlln0eq87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yazdaniscodelab.jobportalapp",
+            "certificate_hash": "8bbad294121d3334a8308fc20bd2791ea06aa9c3"
+          }
+        },
+        {
+          "client_id": "1001810973955-8deo6conka7g1sgs6bvgrgj054jniv9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiKXPKrd72tBzMji1STrstq9Ph7j17kh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001810973955-8deo6conka7g1sgs6bvgrgj054jniv9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
