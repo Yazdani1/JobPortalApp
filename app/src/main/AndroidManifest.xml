@@ -18,10 +18,19 @@
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AllJobActivity" />
-        <activity android:name=".PostJobActivity" />
-        <activity android:name=".InsertJobPostActivity" />
-        <activity android:name=".JobDetailsActivity"></activity>
+        <activity android:name=".AllJobActivity"
+            android:parentActivityName=".HomeActivity"
+            />
+        <activity android:name=".PostJobActivity"
+            android:parentActivityName=".HomeActivity"
+            />
+        <activity android:name=".InsertJobPostActivity"
+            android:parentActivityName=".PostJobActivity"
+            />
+
+        <activity android:name=".JobDetailsActivity"
+            android:parentActivityName=".AllJobActivity"
+            />
     </application>
 
 </manifest>

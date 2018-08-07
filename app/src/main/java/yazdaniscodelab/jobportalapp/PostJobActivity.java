@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +22,8 @@ import yazdaniscodelab.jobportalapp.Model.Data;
 public class PostJobActivity extends AppCompatActivity {
 
     private FloatingActionButton fabBtn;
+
+    private Toolbar toolbar;
 
     //Recycler view..
 
@@ -36,6 +40,13 @@ public class PostJobActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_job);
+
+        toolbar=findViewById(R.id.toolbar_post_job);
+        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fabBtn=findViewById(R.id.fab_add);
 
@@ -88,6 +99,7 @@ public class PostJobActivity extends AppCompatActivity {
                 viewHolder.setJobDescription(model.getDescription());
                 viewHolder.setJobSkills(model.getSkills());
                 viewHolder.setJobSalary(model.getSalary());
+
 
             }
         };

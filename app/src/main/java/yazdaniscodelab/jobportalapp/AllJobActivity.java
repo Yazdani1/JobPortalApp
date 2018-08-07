@@ -1,5 +1,6 @@
 package yazdaniscodelab.jobportalapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import yazdaniscodelab.jobportalapp.Model.Data;
 
@@ -25,6 +30,7 @@ public class AllJobActivity extends AppCompatActivity {
 
     private DatabaseReference mAllJobPost;
 
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -36,9 +42,17 @@ public class AllJobActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("All Job Post");
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Database
 
-        mAllJobPost= FirebaseDatabase.getInstance().getReference().child("Public database");
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+       mAllJobPost= FirebaseDatabase.getInstance().getReference().child("Public database");
+
         mAllJobPost.keepSynced(true);
 
         recyclerView=findViewById(R.id.recycler_all_job);
@@ -65,13 +79,31 @@ public class AllJobActivity extends AppCompatActivity {
                         mAllJobPost
                 ) {
             @Override
-            protected void populateViewHolder(AllJobPostViewHolder viewHolder, Data model, int position) {
+            protected void populateViewHolder(AllJobPostViewHolder viewHolder, final Data model, int position) {
 
                 viewHolder.setJobTitle(model.getTitle());
                 viewHolder.setJobDate(model.getDate());
                 viewHolder.setJobDescription(model.getDescription());
                 viewHolder.setJobSkills(model.getSkills());
                 viewHolder.setJobSalary(model.getSalary());
+
+                viewHolder.myview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent=new Intent(getApplicationContext(),JobDetailsActivity.class);
+
+                        intent.putExtra("title",model.getTitle());
+                        intent.putExtra("date",model.getDate());
+                        intent.putExtra("description",model.getDescription());
+                        intent.putExtra("skills",model.getSkills());
+                        intent.putExtra("salary",model.getSalary());
+
+                        startActivity(intent);
+
+                    }
+                });
+
             }
         };
 

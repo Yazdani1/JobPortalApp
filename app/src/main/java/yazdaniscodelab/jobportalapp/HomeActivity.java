@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -16,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,8 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Job Portal App");
+
+        mAuth=FirebaseAuth.getInstance();
 
 
         btnAllJob=findViewById(R.id.btn_allJob);
@@ -49,5 +57,25 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mainmenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.logout:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
